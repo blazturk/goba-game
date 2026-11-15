@@ -1,10 +1,10 @@
-const words = ["zoga", "goba", "loga", "goga", "zoba"]
-let attemptedWords = ["diga"]
+let attemptedWords = []
 let selectedInput = 0
 const maxLetters = 4
 let startIndex = 0
 const boxes = document.getElementsByClassName("input")
 const wordGrid = document.getElementById("word-grid")
+let alertParagraph = document.getElementById("alert")
 
 
 function handleKey(value) {
@@ -32,20 +32,30 @@ function checkCurrentWord() {
     word += boxes[i].textContent    
   }
 
-  if (words.includes(word.toLowerCase())) {
+  const previous = attemptedWords[attemptedWords.length - 1]
+  const diff = maxLetters - compareWords(word, previous).length
+
+  if (words.includes(word)) {
+    if (diff !== 1) {
+      alertParagraph.textContent = "You can change only one letter at a time!"
+      return
+    } 
+    alertParagraph.textContent = ""
     attemptedWords.push(word)
     if (word === "GOBA") {
       compareWords(word, "GOBA").forEach(i => {
         boxes[startIndex + i].classList.add("input-match")
     })
-      console.log("You win!")
-      return
+    alertParagraph.textContent = "You win!"
+    return
     } 
     compareWords(word, "GOBA").forEach(i => {
     boxes[startIndex + i].classList.add("input-match")
     })
       createRow()
 
+    } else {
+      alertParagraph.textContent = "Word not in list!"
     }
   }
 
@@ -79,7 +89,8 @@ function createRow() {
 }
 
 function startGame() {
-  let startingWord = "GORA"
+  let startingWord = words[Math.floor(Math.random() * (words.length))]
+  attemptedWords.push(startingWord)
   const newRow = document.createElement("div")
   newRow.setAttribute("id", "word-row")
   for (let i = 0; i < maxLetters; i++) {
