@@ -66,7 +66,7 @@ body {
     --gap: 6px;
 
     display: grid;
-    grid-template-columns: repeat(20, 1fr);
+    grid-template-columns: repeat(22, 1fr);
     gap: var(--gap);
     width: 100%;
     max-width: 640px;
@@ -76,6 +76,7 @@ body {
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
+
 
 #keyboard button {
     grid-column: span 2;
@@ -105,30 +106,29 @@ body {
     outline-offset: 2px;
 }
 
-#keyboard button[value="A"] { grid-column: 2 / span 2; }
-#keyboard button[value="Z"] { grid-column: 4 / span 2; }
+#keyboard button[value="Y"] { grid-column: 5 / span 2; }
 
-#keyboard button[value="BACKSPACE"],
-#keyboard button[value="CONFIRM"] {
-    grid-column: span 10;
+#keyboard button[value="BRIŠI"],
+#keyboard button[value="POTRDI"] {
+    grid-column: span 11;
     font-size: 0.85rem;
     letter-spacing: 0.05em;
 }
 
-#keyboard button[value="BACKSPACE"] {
-    grid-column: 1 / span 10;
+#keyboard button[value="BRIŠI"] {
+    grid-column: 1 / span 11;
     background: #5a2d2d;
 }
 
-#keyboard button[value="BACKSPACE"]:hover {
+#keyboard button[value="BRIŠI"]:hover {
     background: #6e3737;
 }
 
-#keyboard button[value="CONFIRM"] {
+#keyboard button[value="POTRDI"] {
     background: #2d5a3a;
 }
 
-#keyboard button[value="CONFIRM"]:hover {
+#keyboard button[value="POTRDI"]:hover {
     background: #376e48;
 }
 
@@ -171,4 +171,26 @@ h2 {
 .header > img {
     margin-top: 60px;
     margin-right: 20px;
+}
+
+#playAgainBtn {
+    height: 52px;
+    padding: 0 32px;
+    border: none;
+    border-radius: 6px;
+    background: #dd7f13;
+    color: #000000;
+    font: 600 0.85rem/1 system-ui, sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.1s, transform 0.05s;
+    display: block;
+    margin: 16px auto 0;
+}
+
+#playAgainBtn:hover {
+        background: #fa9016;
 }

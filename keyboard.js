@@ -1,8 +1,8 @@
 const layout = [
-    "Q","W","E","R","T","Y","U","I","O","P",
-    "A","S","D","F","G","H","J","K","L",
-    "Z","X","C","V","B","N","M",
-    "BACKSPACE", "CONFIRM"
+    "Q","W","E","R","T","Z","U","I","O","P","Š",
+    "A","S","D","F","G","H","J","K","L","Č","Ž",
+    "Y","X","C","V","B","N","M",
+    "BRIŠI", "POTRDI"
 ];
 
 let keyboardElement = document.getElementById("keyboard")

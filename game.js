@@ -8,13 +8,13 @@ let alertParagraph = document.getElementById("alert")
 
 
 function handleKey(value) {
-  if (value === "BACKSPACE") {
+  if (value === "BRIŠI") {
       if (selectedInput > startIndex) {
         selectedInput--
         boxes[selectedInput].textContent = "" 
   }
 
-  } else if (value === "CONFIRM") {
+  } else if (value === "POTRDI") {
         checkCurrentWord()
   }
 
@@ -37,7 +37,7 @@ function checkCurrentWord() {
 
   if (words.includes(word)) {
     if (diff !== 1) {
-      alertParagraph.textContent = "You can change only one letter at a time!"
+      alertParagraph.textContent = "Lahko spremeniš samo eno črko naenkrat!"
       return
     } 
     alertParagraph.textContent = ""
@@ -46,7 +46,14 @@ function checkCurrentWord() {
       compareWords(word, "GOBA").forEach(i => {
         boxes[startIndex + i].classList.add("input-match")
     })
-    alertParagraph.textContent = "You win!"
+    const newGameBtn = document.createElement("button")
+    newGameBtn.textContent = "Igraj ponovno!"
+    newGameBtn.setAttribute("id", "playAgainBtn")
+    alertParagraph.textContent = "Zmagal si!"
+    alertParagraph.appendChild(newGameBtn)
+    newGameBtn.addEventListener("click", function() {
+      window.location.reload();
+    })
     return
     } 
     compareWords(word, "GOBA").forEach(i => {
@@ -55,7 +62,7 @@ function checkCurrentWord() {
       createRow()
 
     } else {
-      alertParagraph.textContent = "Word not in list!"
+      alertParagraph.textContent = "Beseda ni na seznamu!"
     }
   }
 
@@ -90,6 +97,10 @@ function createRow() {
 
 function startGame() {
   let startingWord = words[Math.floor(Math.random() * (words.length))]
+  if (startingWord === "GOBA") {
+    startGame()
+    return
+  }
   attemptedWords.push(startingWord)
   const newRow = document.createElement("div")
   newRow.setAttribute("id", "word-row")
@@ -109,7 +120,6 @@ function startGame() {
 }
 
 startGame()
-
 
 
 
