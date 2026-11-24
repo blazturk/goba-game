@@ -25,3 +25,19 @@ function drawKeyboard() {
 }
 
 drawKeyboard()
+
+document.addEventListener("keydown", function(e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return
+    if (e.key === "Enter") {
+        e.preventDefault()
+        handleKey("POTRDI")
+    } else if (e.key === "Backspace") {
+        e.preventDefault()
+        handleKey("BRIŠI")
+    } else {
+        const key = e.key.toUpperCase()
+        if (key.length === 1 && layout.includes(key)) {
+            handleKey(key)
+        }
+    }
+})
