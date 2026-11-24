@@ -194,3 +194,42 @@ h2 {
 #playAgainBtn:hover {
         background: #fa9016;
 }
+
+#word-grid {
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    #word-grid {
+        scrollbar-width: thin;
+        scrollbar-color: #376e48 transparent;
+    }
+}
+
+#word-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+#word-grid::-webkit-scrollbar-button {
+    display: none;
+}
+
+#word-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#word-grid::-webkit-scrollbar-thumb {
+    background: #376e48;
+    border-radius: 3px;
+}
+
+#word-grid::-webkit-scrollbar-thumb:hover {
+    background: #dd7f13;
+}
+
+#word-row {
+    scroll-snap-align: start;
+}

@@ -5,9 +5,12 @@ let startIndex = 0
 const boxes = document.getElementsByClassName("input")
 const wordGrid = document.getElementById("word-grid")
 let alertParagraph = document.getElementById("alert")
+let gameOver = false
 
 
 function handleKey(value) {
+  if (gameOver) return
+
   if (value === "BRIŠI") {
       if (selectedInput > startIndex) {
         selectedInput--
@@ -46,6 +49,7 @@ function checkCurrentWord() {
       compareWords(word, "GOBA").forEach(i => {
         boxes[startIndex + i].classList.add("input-match")
     })
+    gameOver = true
     const newGameBtn = document.createElement("button")
     newGameBtn.textContent = "Igraj ponovno!"
     newGameBtn.setAttribute("id", "playAgainBtn")
@@ -93,6 +97,7 @@ function createRow() {
     wordGrid.appendChild(newRow)
     startIndex += maxLetters
     selectedInput = startIndex
+    newRow.scrollIntoView({ behavior: "smooth", block: "end" })
 }
 
 function startGame() {
