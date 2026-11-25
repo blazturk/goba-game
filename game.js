@@ -6,6 +6,7 @@ const boxes = document.getElementsByClassName("input")
 const wordGrid = document.getElementById("word-grid")
 let alertParagraph = document.getElementById("alert")
 let gameOver = false
+const isDesktop = window.matchMedia("(min-width: 1024px)");
 
 
 function handleKey(value) {
@@ -97,8 +98,13 @@ function createRow() {
     wordGrid.appendChild(newRow)
     startIndex += maxLetters
     selectedInput = startIndex
+    if (isDesktop.matches) {
     newRow.scrollIntoView({ behavior: "smooth", block: "end" })
+    } else {
+    wordGrid.scrollTo({ top: wordGrid.scrollHeight, behavior: "smooth" })
+  }
 }
+
 
 function startGame() {
   let startingWord = words[Math.floor(Math.random() * (words.length))]
