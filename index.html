@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOBA - Igra besed</title>
+    <title>Goba</title>
     <meta name="description" content="GOBA - Igra besed">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://goba.pw/">
-    <meta property="og:title" content="GOBA - Igra besed">
+    <meta property="og:title" content="Goba">
     <meta property="og:description" content="GOBA - Igra besed">
     <meta property="og:image" content="https://goba.pw/preview.png">
     <meta property="og:image:width" content="1200">
@@ -23,7 +23,36 @@
         <img src="goba.png" alt="icon" height="80px" width="80px">
         <h2>Goba</h2>
     </div>
-
+    <div id="modal">
+        <h2>Pravila igre</h2>
+    <p>
+        Cilj igre je priti do besede <strong>GOBA</strong>.
+        Začneš z naključno štiričrkovno besedo in jo spreminjaš korak za korakom.
+    </p>
+    <p>
+        V vsakem koraku lahko zamenjaš <strong>samo eno črko</strong>.
+        Vrstnega reda črk ne smeš spreminjati.
+    </p>
+    <p>
+        Vsaka vpisana beseda mora biti <strong>veljavna slovenska beseda</strong>
+        s štirimi črkami. Dovoljene so tudi sklonske in druge pregibne oblike
+        (npr. <em>roka → roke</em>).
+    </p>
+    <p>
+        Črke, ki se že ujemajo z besedo GOBA na pravem mestu,
+        se obarvajo <span style="color:#dd7f13">oranžno</span>.
+    </p>
+    <p>
+        Besedo potrdiš s tipko <strong>POTRDI</strong> ali z Enter,
+        črko izbrišeš z <strong>BRIŠI</strong> ali Backspace.</p>
+    <p>
+        Primer: <strong>RAKA → ROKA → ROBA → GOBA</strong>
+    </p>
+    <p>
+        Poskusi priti do gobe v čim manj korakih!
+    </p>
+    <button id="closeModalBtn">Igraj!</button>
+    </div>
     <div id="word-grid">
         <div id="word-row">
             <div class='input' id='0'></div>
@@ -32,8 +61,10 @@
             <div class='input' id='3'></div>
         </div>
     </div>
+    <p id="rulesParagraph">Ne veš kje začeti? Spoznaj <span id="showRules">pravila igre</span></p>
     <p id="alert"></p>
     <div id="keyboard"></div>
+    <script src="modal.js"></script>    
     <script src="words.js"></script>    
     <script src="game.js"></script>
     <script src="keyboard.js"></script>
